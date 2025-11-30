@@ -1,0 +1,21 @@
+MATCH(a:Album{id: 1})
+MATCH(m1:Musicas{id: 1})
+MERGE(a)-[:CONTÉM]->(m1)
+
+
+
+//Define relacionamento LANCOU entre Artista Linkin Park e seus álbuns
+MATCH(a:Artista{nomeArtista: 'Linkin Park'})
+MATCH(ab1:Album{id: 14})
+MATCH(ab2:Album{id: 15})
+MATCH(ab3:Album{id: 16})
+MERGE(a)-[:LANÇOU]->(ab1)
+MERGE(a)-[:LANÇOU]->(ab2)
+MERGE(a)-[:LANÇOU]->(ab3)
+
+
+MATCH(a:Album{nomeAlbum: 'Hybrid Theory'})
+MATCH(m1:Musicas{id: 24})
+MERGE(a)-[:CONTÉM]->(m1)
+
+
