@@ -19,3 +19,13 @@ MATCH(m1:Musicas{id: 24})
 MERGE(a)-[:CONTÉM]->(m1)
 
 
+//Cria o relacionamento CURTIU entre usuário e músicas
+//Usuário id = 1
+UNWIND[
+  {idMusica: 7},{idMusica: 10},{idMusica: 11},{idMusica: 13},
+  {idMusica: 14},{idMusica: 17},{idMusica: 25},{idMusica: 26}] as playlist
+MATCH(u:Usuario{id: 1})
+
+MATCH(m:Musicas)
+WHERE m.id = playlist.idMusica
+MERGE(u)-[r:CURTIU]->(m)
