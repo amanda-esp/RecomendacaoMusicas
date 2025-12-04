@@ -1,89 +1,36 @@
-//Album 1
-MERGE(a:Album{id: 1})-[:CONTEM]->(m:Musicas{id: 1});
+UNWIND [
+  {idAlbum: 1,  idMusica: 1},
+  {idAlbum: 2,  idMusica: 2},
+  {idAlbum: 2,  idMusica: 3},
+  {idAlbum: 3,  idMusica: 4},
+  {idAlbum: 4,  idMusica: 5},
+  {idAlbum: 4,  idMusica: 6},
+  {idAlbum: 5,  idMusica: 7},
+  {idAlbum: 5,  idMusica: 8},
+  {idAlbum: 6,  idMusica: 9},
+  {idAlbum: 6,  idMusica: 10},
+  {idAlbum: 7,  idMusica: 11},
+  {idAlbum: 7,  idMusica: 14},
+  {idAlbum: 8,  idMusica: 12},
+  {idAlbum: 9,  idMusica: 13},
+  {idAlbum: 10, idMusica: 15},
+  {idAlbum: 10, idMusica: 16},
+  {idAlbum: 11, idMusica: 17},
+  {idAlbum: 12, idMusica: 18},
+  {idAlbum: 13, idMusica: 19},
+  {idAlbum: 13, idMusica: 20},
+  {idAlbum: 14, idMusica: 21},
+  {idAlbum: 15, idMusica: 22},
+  {idAlbum: 15, idMusica: 23},
+  {idAlbum: 16, idMusica: 24},
+  {idAlbum: 17, idMusica: 25},
+  {idAlbum: 18, idMusica: 26},
+  {idAlbum: 19, idMusica: 27},
+  {idAlbum: 20, idMusica: 28},
+  {idAlbum: 21, idMusica: 29},
+  {idAlbum: 22, idMusica: 30}
+] AS item
 
-//Album 2
-MATCH(a:Album{id: 2})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 2});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 3});
-
-//Album 3
-MERGE(a:Album{id: 3})-[:CONTEM]->(m:Musicas{id: 4});
-
-//Album 4
-MATCH(a:Album{id: 4})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 5});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 6});
-
-//Album 5
-MATCH(a:Album{id: 5})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 7});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 8});
-
-//Album 6
-MATCH(a:Album{id: 6})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 9});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 10});
-
-//Album 7
-MATCH(a:Album{id: 7})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 11});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 14});
-
-//Album 8
-MERGE(a:Album{id: 8})-[:CONTEM]->(m:Musicas{id: 12});
-
-//Album 9
-MERGE(a:Album{id: 9})-[:CONTEM]->(m:Musicas{id: 13});
-
-//Album 10
-MATCH(a:Album{id: 10})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 15});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 16});
-
-//Album 11
-MERGE(a:Album{id: 11})-[:CONTEM]->(m:Musicas{id: 17});
-
-//Album 12
-MERGE(a:Album{id: 12})-[:CONTEM]->(m:Musicas{id: 18});
-
-//Album 13
-MATCH(a:Album{id: 13})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 19});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 20});
-
-//Album 14
-MERGE(a:Album{id: 14})-[:CONTEM]->(m:Musicas{id: 21});
-
-//Album 15
-MATCH(a:Album{id: 15})
-
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 22});
-MERGE(a)-[:CONTEM]->(m:Musicas{id: 23});
-
-//Album 16
-MERGE(a:Album{id: 16})-[:CONTEM]->(m:Musicas{id: 24});
-
-//Album 17
-MERGE(a:Album{id: 17})-[:CONTEM]->(m:Musicas{id: 25});
-
-//Album 18
-MERGE(a:Album{id: 18})-[:CONTEM]->(m:Musicas{id: 26});
-
-//Album 19
-MERGE(a:Album{id: 19})-[:CONTEM]->(m:Musicas{id: 27});
-
-//Album 20
-MERGE(a:Album{id: 20})-[:CONTEM]->(m:Musicas{id: 28});
-
-//Album 21
-MERGE(a:Album{id: 21})-[:CONTEM]->(m:Musicas{id: 29});
-
-//Album 22
-MERGE(a:Album{id: 22})-[:CONTEM]->(m:Musicas{id: 30});
+MATCH (al:Album {idAlbum: item.idAlbum})
+MATCH (m:Musicas {id: item.idMusica})
+MERGE (al)-[:CONTÉM]->(m);
